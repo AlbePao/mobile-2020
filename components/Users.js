@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text, View } from 'react-native';
+import { basic } from '../theme';
 
 export const Users = (props) => {
   const {
@@ -33,33 +34,35 @@ export const Users = (props) => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <Text>Username</Text>
-          </th>
-          <th>
-            <Text>Default payment method</Text>
-          </th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {displayedUsers.map((user) => (
-          <tr key={user.id}>
-            <td>
-              <Text>{user.username}</Text>
-            </td>
-            <td>
-              <Text>{user.PaymentMethods.find((paymentMethod) => paymentMethod.default).name}</Text>
-            </td>
-            <td>
-              <Button title='Details' onPress={() => navigate(user)} />
-            </td>
+    <View style={basic.usersList}>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <Text>Username</Text>
+            </th>
+            <th>
+              <Text>Default payment method</Text>
+            </th>
+            <th></th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {displayedUsers.map((user) => (
+            <tr key={user.id}>
+              <td>
+                <Text>{user.username}</Text>
+              </td>
+              <td>
+                <Text>{user.PaymentMethods.find((paymentMethod) => paymentMethod.default).name}</Text>
+              </td>
+              <td>
+                <Button title='Details' onPress={() => navigate(user)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </View>
   );
 };

@@ -5,7 +5,7 @@ import { basic } from '../theme';
 
 export const Sort = ({ setOrder, order }) => {
   return (
-    <View>
+    <View style={basic.flexEnd}>
       <Text>Order users by</Text>
       <Picker selectedValue={order} style={basic.input} onValueChange={(itemValue) => setOrder(itemValue)}>
         <Picker.Item label='None' value='' />

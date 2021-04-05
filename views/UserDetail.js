@@ -6,28 +6,44 @@ export const UserDetail = ({ route }) => {
   const {
     params: { user },
   } = route;
-  console.log(route);
 
   const signupDate = new Date(user.signup_date).toLocaleString();
 
   const renderPaymentMethod = (paymentMethod) => (
-    <View key={paymentMethod.id}>
+    <View key={paymentMethod.id} style={basic.userDetail}>
       <Text>
-        Name: {paymentMethod.name} {paymentMethod.default && <Text>(Default)</Text>}
+        <strong>Name</strong> {paymentMethod.name} {paymentMethod.default && <Text>(Default)</Text>}
       </Text>
-      <Text>Type: {paymentMethod.type}</Text>
-      <Text>Ending with: {paymentMethod.ending_with}</Text>
-      <Text>Currency: {paymentMethod.currency}</Text>
+      <Text>
+        <strong>Type</strong> {paymentMethod.type}
+      </Text>
+      <Text>
+        <strong>Ending with</strong> {paymentMethod.ending_with}
+      </Text>
+      <Text>
+        <strong>Currency</strong> {paymentMethod.currency}
+      </Text>
     </View>
   );
 
   return (
-    <View style={basic.container}>
-      <Text>Name {user.name}</Text>
-      <Text>Surname {user.surname}</Text>
-      <Text>Username {user.username}</Text>
-      <Text>Signup date {signupDate}</Text>
-      <Text>Payment methods</Text>
+    <View>
+      <Text style={basic.h1}>User Detail</Text>
+      <View style={basic.userDetail}>
+        <Text>
+          <strong>Name</strong> {user.name}
+        </Text>
+        <Text>
+          <strong>Surname</strong> {user.surname}
+        </Text>
+        <Text>
+          <strong>Username</strong> {user.username}
+        </Text>
+        <Text>
+          <strong>Signup date</strong> {signupDate}
+        </Text>
+      </View>
+      <Text style={basic.h1}>Payment methods</Text>
       {user.PaymentMethods.map((paymentMethod) => renderPaymentMethod(paymentMethod))}
     </View>
   );

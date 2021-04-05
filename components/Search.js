@@ -4,7 +4,7 @@ import { basic } from '../theme';
 
 export const Search = ({ setSearch }) => {
   return (
-    <View>
+    <View style={basic.flexStart}>
       <Text>Search by email</Text>
       <TextInput style={basic.input} onChangeText={setSearch} />
     </View>
